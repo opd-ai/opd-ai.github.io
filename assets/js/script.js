@@ -317,10 +317,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const content = await navigator.loadEpisodeContent(storyPath, episode);
                 contentDisplay.innerHTML = `
                     <div class="episode-content">
-                        <div class="contents-section">
-                            <h3>Contents</h3>
-                            <div class="markdown-content">${content.contents}</div>
-                        </div>
                         <div class="episode-section">
                             <h3>Episode</h3>
                             <div class="markdown-content">${content.episode}</div>
@@ -335,5 +331,26 @@ document.addEventListener('DOMContentLoaded', async () => {
                 `;
             }
         }
+
+        if (e.target.matches('.story-button')) {
+            // Toggle active state for story
+            const wasActive = e.target.classList.contains('active');
+            document.querySelectorAll('.story-button').forEach(btn => 
+                btn.classList.remove('active'));
+            if (!wasActive) e.target.classList.add('active');
+    
+            // Toggle episode list visibility
+            const episodeList = e.target.nextElementSibling;
+            document.querySelectorAll('.episode-list').forEach(list => 
+                list.classList.remove('active'));
+            if (!wasActive && episodeList) episodeList.classList.add('active');
+        }
+    
+        if (e.target.matches('.episode-button')) {
+            document.querySelectorAll('.episode-button').forEach(btn => 
+                btn.classList.remove('active'));
+            e.target.classList.add('active');
+        }
     });
+
 });
