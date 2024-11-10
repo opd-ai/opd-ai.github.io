@@ -1,0 +1,129 @@
+:root {
+    --primary-dark: #1a1a1a;
+    --accent-purple: #6b2c91;
+    --accent-gold: #c9a959;
+    --text-light: #e1e1e1;
+    --shadow-color: rgba(0, 0, 0, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Crimson Text', serif;
+    background: var(--primary-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'MedievalSharp', cursive;
+    color: var(--accent-gold);
+}
+
+.hero {
+    min-height: 60vh;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                    url('/assets/images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px var(--shadow-color);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.story-navigator {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--accent-gold);
+    padding: 1rem;
+    margin-top: 2rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.story-list, .episode-list {
+    padding: 1rem;
+}
+
+.story-entry, .episode-entry {
+    margin: 0.5rem 0;
+    opacity: 0;
+    animation: slideIn 0.3s ease forwards;
+}
+
+.story-button, .episode-button {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    color: var(--text-light);
+    border: 1px solid var(--accent-purple);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: 'Crimson Text', serif;
+    font-size: 1rem;
+}
+
+.story-button:hover, .episode-button:hover {
+    background: var(--accent-purple);
+    transform: translateX(5px);
+}
+
+.content-display {
+    padding: 2rem;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--accent-purple);
+    min-height: 400px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--accent-gold);
+}
+
+@media (max-width: 768px) {
+    .story-navigator {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
