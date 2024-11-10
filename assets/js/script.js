@@ -63,8 +63,8 @@ class StoryStructureScanner {
         while (continueScanning && episodeNum <= 99) {
             const paddedNum = episodeNum.toString().padStart(2, '0');
             const episodeDir = `${paddedNum}_Episode`;
-            const contentsPath = `/stories/${storyName}/${episodeDir}/Contents.md`;
-            const episodePath = `/stories/${storyName}/${episodeDir}/Episode.md`;
+            const contentsPath = `/${storyName}/${episodeDir}/Contents.md`;
+            const episodePath = `/${storyName}/${episodeDir}/Episode.md`;
 
             // Check if both required files exist
             const [contentsExists, episodeExists] = await Promise.all([
@@ -153,8 +153,8 @@ class StoryNavigator {
         }
 
         try {
-            const contentsPath = `/stories/${storyName}/${episodeName}/Contents.md`;
-            const episodePath = `/stories/${storyName}/${episodeName}/Episode.md`;
+            const contentsPath = `/${storyName}/${episodeName}/Contents.md`;
+            const episodePath = `/${storyName}/${episodeName}/Episode.md`;
 
             const [contentsResponse, episodeResponse] = await Promise.all([
                 fetch(contentsPath),
