@@ -268,6 +268,21 @@ blockquote p {
     font-style: italic;
 }
 
+.rss-button {
+    background: var(--accent-purple);
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.rss-button:hover {
+    background: var(--accent-purple-light);
+}
+
 /* Original Animations */
 @keyframes slideIn {
     from {

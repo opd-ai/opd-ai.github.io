@@ -10,11 +10,22 @@
     
     <link rel="stylesheet" href="/assets/css/style.css">
     <script type="text/javascript" src="/assets/js/script.js"> </script>
+    <script type="text/javascript" src="/assets/js/rss.js"> </script>
     <script type="text/javascript" src="/assets/js/hero-content.js"> </script>
     <!-- Add these in your HTML head -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
     <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateButton = document.getElementById('generateRSS');
+            const generator = new RSSGenerator();
+            
+            generateButton.addEventListener('click', () => {
+                generator.generateRSS();
+            });
+        });
+    </script>
 </head>
 <body>
     <header class="hero">
@@ -22,6 +33,7 @@
             <h1 id="hero-headline">Dark Tales & Dangerous Dungeons</h1>
             <div id="hero-intro">Embark on perilous adventures through haunted dungeons and cursed lands. 
                Choose your story, brave adventurer, and begin your journey.</div>
+            <button id="generateRSS" class="rss-button">Generate RSS Feed</button>
         </div>
     </header>
 
