@@ -1,3 +1,43 @@
+class PDFManager {
+    constructor() {
+        this.pdfCache = new Map();
+    }
+
+    async checkPDFExists(storyPath, episodeName) {
+        const cacheKey = `${storyPath}/${episodeName}`;
+        
+        if (this.pdfCache.has(cacheKey)) {
+            return this.pdfCache.get(cacheKey);
+        }
+
+        const pdfPath = `/${storyPath}/${episodeName}/index.html.pdf`;
+        
+        try {
+            const response = await fetch(pdfPath, { method: 'HEAD' });
+            const exists = response.status === 200;
+            this.pdfCache.set(cacheKey, exists);
+            return exists;
+        } catch (error) {
+            this.pdfCache.set(cacheKey, false);
+            return false;
+        }
+    }
+
+    createPDFButton(storyPath, episodeName) {
+        const pdfPath = `/${storyPath}/${episodeName}/index.html.pdf`;
+        return `
+            <div class="pdf-download-section">
+                <a href="${pdfPath}" 
+                   class="pdf-download-button" 
+                   download 
+                   target="_blank">
+                    📥 Download PDF Version
+                </a>
+            </div>
+        `;
+    }
+}
+
 class IllustrationManager {
     constructor() {
         this.illustrations = [];
@@ -245,6 +285,7 @@ class StoryNavigator {
         this.episodeCache = new Map();
         this.markdownRenderer = new MarkdownRenderer();
         this.illustrationManager = new IllustrationManager();
+        this.pdfManager = new PDFManager();
     }
 
     async initialize() {
@@ -324,34 +365,29 @@ class StoryNavigator {
         }
 
         try {
-            const episodePath = `/${storyPath}/${episodeName}/Episode.md`;
-
-            // Load episode content and scan for illustrations concurrently
-            const [episodeResponse, illustrations] = await Promise.all([
-                fetch(episodePath),
-                this.illustrationManager.scanForIllustrations(storyPath, episodeName)
+            // Load episode content, illustrations, and check PDF availability concurrently
+            const [episodeResponse, illustrations, hasPDF] = await Promise.all([
+                fetch(`/${storyPath}/${episodeName}/Episode.md`),
+                this.illustrationManager.scanForIllustrations(storyPath, episodeName),
+                this.pdfManager.checkPDFExists(storyPath, episodeName)
             ]);
 
             if (!episodeResponse.ok) {
                 throw new Error('Failed to load episode files');
             }
 
-            try {
-                this.markdownRenderer.setStoryPath(storyPath);
-                
-                const content = {
-                    episode: episodeResponse.ok ? 
-                        this.markdownRenderer.render(await episodeResponse.text()) : '',
-                    hasEpisode: episodeResponse.ok,
-                    illustrations: illustrations
-                };
+            this.markdownRenderer.setStoryPath(storyPath);
+            
+            const content = {
+                episode: episodeResponse.ok ? 
+                    this.markdownRenderer.render(await episodeResponse.text()) : '',
+                hasEpisode: episodeResponse.ok,
+                illustrations: illustrations,
+                hasPDF: hasPDF
+            };
 
-                this.episodeCache.set(cacheKey, content);
-                return content;
-            } catch (error) {
-                console.error('Error loading episode content:', error);
-                throw error;
-            }
+            this.episodeCache.set(cacheKey, content);
+            return content;
         } catch (error) {
             console.error('Error loading episode content:', error);
             throw error;
@@ -401,6 +437,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <div class="episode-content">
                         <div class="episode-section">
                             <h3>Episode</h3>
+                            ${content.hasPDF ? 
+                                navigator.pdfManager.createPDFButton(storyPath, episode) : 
+                                ''}
                             <div class="markdown-content">${content.episode}</div>
                         </div>
                         ${content.illustrations.length > 0 ? 

@@ -283,6 +283,31 @@ blockquote p {
     background: var(--accent-purple-light);
 }
 
+.pdf-download-section {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: var(--code-bg);
+    border-radius: 4px;
+    text-align: right;
+}
+
+.pdf-download-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--accent-purple);
+    color: var(--text-light);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.pdf-download-button:hover {
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    transform: translateY(-2px);
+    border-bottom: none;
+}
+
 /* Original Animations */
 @keyframes slideIn {
     from {
