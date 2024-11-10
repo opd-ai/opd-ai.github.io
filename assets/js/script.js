@@ -1,11 +1,75 @@
+class IllustrationManager {
+    constructor() {
+        this.illustrations = [];
+    }
+
+    createIllustrationHTML(illustrations) {
+        if (illustrations.length === 0) return '';
+
+        return `
+            <div class="illustrations-section">
+                <h3>Illustrations</h3>
+                <div class="illustrations-grid">
+                    ${illustrations.map(ill => `
+                        <figure class="illustration-item">
+                            <img src="${ill.imagePath}" 
+                                 alt="${ill.caption}" 
+                                 loading="lazy"
+                                 onclick="openLightbox(this)">
+                            <figcaption class="illustration-caption">
+                                ${ill.caption}
+                            </figcaption>
+                        </figure>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    async scanForIllustrations(storyPath, episodeName) {
+        const illustrations = [];
+        const markdownRenderer = new MarkdownRenderer();
+        markdownRenderer.setStoryPath(storyPath);
+
+        // Try to load Caption_1.md through Caption_3.md
+        for (let i = 1; i <= 3; i++) {
+            const captionPath = `/${storyPath}/${episodeName}/Caption_${i}.md`;
+            try {
+                const response = await fetch(captionPath);
+                if (response.ok) {
+                    const captionText = await response.text();
+                    // Extract the first image and its caption from the markdown
+                    const imgMatch = captionText.match(/!\[(.*?)\]\((.*?)\)/);
+                    if (imgMatch) {
+                        const [, altText, imagePath] = imgMatch;
+                        // Use the rest of the text as caption
+                        const caption = captionText
+                            .replace(/!\[(.*?)\]\((.*?)\)/, '') // Remove image markdown
+                            .trim();
+                        
+                        illustrations.push({
+                            imagePath: `/${storyPath}/${episodeName}/${imagePath.replace(/^\/+/, '')}`,
+                            caption: caption || altText
+                        });
+                    }
+                }
+            } catch (error) {
+                console.log(`No Caption_${i}.md found`);
+            }
+        }
+
+        return illustrations;
+    }
+}
+
 class MarkdownRenderer {
     constructor() {
-        // Configure marked options
+        // Configure marked options as before
         marked.setOptions({
-            gfm: true, // GitHub Flavored Markdown
-            breaks: true, // Convert line breaks to <br>
-            headerIds: true, // Add IDs to headers for linking
-            mangle: false, // Don't escape HTML
+            gfm: true,
+            breaks: true,
+            headerIds: true,
+            mangle: false,
             highlight: function(code, lang) {
                 if (lang && hljs.getLanguage(lang)) {
                     try {
@@ -14,18 +78,26 @@ class MarkdownRenderer {
                         console.error('Highlight error:', e);
                     }
                 }
-                return code; // Use plain text if language isn't found
+                return code;
             }
         });
 
         // Custom renderer for additional features
         const renderer = new marked.Renderer();
         
-        // Custom image rendering with lazy loading and lightbox
+        // Modified image rendering to include storyPath
         renderer.image = (href, title, text) => {
+            // Get the current storyPath from the data attribute we'll set
+            const storyPath = this.currentStoryPath || '';
+            
+            // Only prefix the href if it's a relative path (doesn't start with http/https)
+            const imageSrc = href.startsWith('http') ? 
+                href : 
+                `/${storyPath}/${href.replace(/^\/+/, '')}`;
+
             return `
                 <figure class="markdown-image">
-                    <img src="${href}" 
+                    <img src="${imageSrc}" 
                          alt="${text}" 
                          title="${title || text}" 
                          loading="lazy" 
@@ -35,7 +107,7 @@ class MarkdownRenderer {
             `;
         };
 
-        // Custom link rendering
+        // Keep the existing link renderer
         renderer.link = (href, title, text) => {
             const isExternal = href.startsWith('http');
             return `
@@ -49,6 +121,11 @@ class MarkdownRenderer {
         };
 
         marked.use({ renderer });
+    }
+
+    // Add method to set the current story path
+    setStoryPath(path) {
+        this.currentStoryPath = path;
     }
 
     render(markdown) {
@@ -167,6 +244,7 @@ class StoryNavigator {
         this.currentStory = null;
         this.episodeCache = new Map();
         this.markdownRenderer = new MarkdownRenderer();
+        this.illustrationManager = new IllustrationManager();
     }
 
     async initialize() {
@@ -239,7 +317,6 @@ class StoryNavigator {
     }
 
     async loadEpisodeContent(storyPath, episodeName) {
-        // Use exact paths for file operations
         const cacheKey = `${storyPath}/${episodeName}`;
         
         if (this.episodeCache.has(cacheKey)) {
@@ -249,8 +326,10 @@ class StoryNavigator {
         try {
             const episodePath = `/${storyPath}/${episodeName}/Episode.md`;
 
-            const [episodeResponse] = await Promise.all([
-                fetch(episodePath)
+            // Load episode content and scan for illustrations concurrently
+            const [episodeResponse, illustrations] = await Promise.all([
+                fetch(episodePath),
+                this.illustrationManager.scanForIllustrations(storyPath, episodeName)
             ]);
 
             if (!episodeResponse.ok) {
@@ -258,12 +337,15 @@ class StoryNavigator {
             }
 
             try {
+                this.markdownRenderer.setStoryPath(storyPath);
+                
                 const content = {
                     episode: episodeResponse.ok ? 
                         this.markdownRenderer.render(await episodeResponse.text()) : '',
-                    hasEpisode: episodeResponse.ok
+                    hasEpisode: episodeResponse.ok,
+                    illustrations: illustrations
                 };
-    
+
                 this.episodeCache.set(cacheKey, content);
                 return content;
             } catch (error) {
@@ -321,6 +403,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <h3>Episode</h3>
                             <div class="markdown-content">${content.episode}</div>
                         </div>
+                        ${content.illustrations.length > 0 ? 
+                            navigator.illustrationManager.createIllustrationHTML(content.illustrations) : 
+                            ''}
                     </div>
                 `;
             } catch (error) {

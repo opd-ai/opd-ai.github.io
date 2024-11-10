@@ -228,6 +228,46 @@ blockquote p {
     color: var(--accent-gold);
 }
 
+.illustrations-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.illustrations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.illustration-item {
+    position: relative;
+    margin: 0;
+    transition: transform 0.3s ease;
+}
+
+.illustration-item:hover {
+    transform: scale(1.02);
+}
+
+.illustration-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid var(--accent-purple);
+}
+
+.illustration-caption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-align: center;
+    font-style: italic;
+}
+
 /* Original Animations */
 @keyframes slideIn {
     from {
@@ -252,5 +292,9 @@ blockquote p {
 
     .hero h1 {
         font-size: 2.5rem;
+    }
+
+    .illustrations-grid {
+        grid-template-columns: 1fr;
     }
 }
