@@ -1,14 +1,18 @@
+
 // hero-content.js
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize the custom markdown renderer
+    const mdRenderer = new MarkdownRenderer();
+
     // Get elements by ID
     const heroHeadline = document.getElementById('hero-headline');
     const heroIntro = document.getElementById('hero-intro');
 
     // Store original content as fallback
     const fallbackContent = {
-        headline: heroHeadline ? heroHeadline.textContent : 'Dark Tales & Dangerous Dungeons',
-        intro: heroIntro ? heroIntro.textContent : 'Embark on perilous adventures through haunted dungeons and cursed lands.'
+        headline: heroHeadline ? heroHeadline.innerHTML : 'Dark Tales & Dangerous Dungeons',
+        intro: heroIntro ? heroIntro.innerHTML : 'Embark on perilous adventures through haunted dungeons and cursed lands.'
     };
 
     // Function to fetch and process markdown content
@@ -18,7 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error(`Failed to fetch ${filePath}`);
             }
-            return await response.text();
+            const markdown = await response.text();
+            // Use the custom renderer to convert markdown to HTML
+            return mdRenderer.render(markdown);
         } catch (error) {
             console.error('Error loading markdown:', error);
             return null;
@@ -29,7 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateContentWithFade(element, content) {
         element.style.opacity = '0';
         setTimeout(() => {
-            element.textContent = content;
+            // If content is wrapped in <p> tags and it's the headline, unwrap it
+            if (element === heroHeadline && content.startsWith('<p>') && content.endsWith('</p>')) {
+                content = content.slice(3, -4);
+            }
+            element.innerHTML = content;
+            
+            // Initialize any syntax-highlighted code blocks
+            if (window.hljs) {
+                element.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightElement(block);
+                });
+            }
+            
             element.style.opacity = '1';
         }, 300);
     }
@@ -51,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (heroHeadline) {
                 updateContentWithFade(
                     heroHeadline, 
-                    headlineContent?.trim() || fallbackContent.headline
+                    headlineContent || fallbackContent.headline
                 );
             }
 
@@ -59,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (heroIntro) {
                 updateContentWithFade(
                     heroIntro, 
-                    introContent?.trim() || fallbackContent.intro
+                    introContent || fallbackContent.intro
                 );
             }
 
@@ -88,6 +106,37 @@ document.addEventListener('DOMContentLoaded', () => {
         
         .loading {
             opacity: 0.5;
+        }
+
+        .markdown-error {
+            color: #ff4444;
+            padding: 1em;
+            border: 1px solid #ff4444;
+            border-radius: 4px;
+            background: rgba(255, 68, 68, 0.1);
+        }
+
+        .external-link::after {
+            content: '↗';
+            display: inline-block;
+            margin-left: 0.2em;
+            font-size: 0.8em;
+        }
+
+        .markdown-image {
+            margin: 1em 0;
+            text-align: center;
+        }
+
+        .markdown-image img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .markdown-image figcaption {
+            font-style: italic;
+            margin-top: 0.5em;
         }
     `;
 
