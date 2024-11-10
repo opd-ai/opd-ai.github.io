@@ -1,8 +1,75 @@
+class MarkdownRenderer {
+    constructor() {
+        // Configure marked options
+        marked.setOptions({
+            gfm: true, // GitHub Flavored Markdown
+            breaks: true, // Convert line breaks to <br>
+            headerIds: true, // Add IDs to headers for linking
+            mangle: false, // Don't escape HTML
+            highlight: function(code, lang) {
+                if (lang && hljs.getLanguage(lang)) {
+                    try {
+                        return hljs.highlight(code, { language: lang }).value;
+                    } catch (e) {
+                        console.error('Highlight error:', e);
+                    }
+                }
+                return code; // Use plain text if language isn't found
+            }
+        });
+
+        // Custom renderer for additional features
+        const renderer = new marked.Renderer();
+        
+        // Custom image rendering with lazy loading and lightbox
+        renderer.image = (href, title, text) => {
+            return `
+                <figure class="markdown-image">
+                    <img src="${href}" 
+                         alt="${text}" 
+                         title="${title || text}" 
+                         loading="lazy" 
+                         onclick="openLightbox(this)">
+                    ${title ? `<figcaption>${title}</figcaption>` : ''}
+                </figure>
+            `;
+        };
+
+        // Custom link rendering
+        renderer.link = (href, title, text) => {
+            const isExternal = href.startsWith('http');
+            return `
+                <a href="${href}" 
+                   ${isExternal ? 'target="_blank" rel="noopener noreferrer"' : ''} 
+                   title="${title || text}"
+                   class="${isExternal ? 'external-link' : 'internal-link'}">
+                    ${text}
+                </a>
+            `;
+        };
+
+        marked.use({ renderer });
+    }
+
+    render(markdown) {
+        try {
+            const html = marked.parse(markdown);
+            return html;
+        } catch (error) {
+            console.error('Markdown parsing error:', error);
+            return `<div class="markdown-error">Error parsing markdown: ${error.message}</div>`;
+        }
+    }
+}
+
 class StoryStructureScanner {
     constructor() {
-        this.storyPattern = /^[A-Z][A-Za-z]+$/;
+        // First segment: Must start with capital letter, only letters
+        // After slash: Can start with number or capital letter, 
+        // and include letters, numbers, hyphens, and underscores
+        this.storyPattern = /^([A-Z][A-Za-z]*)(\/[A-Z0-9][A-Za-z0-9_-]*)*$/;
         this.episodePattern = /^(\d{2})_Episode$/;
-        this.knownStories = []; // Will be populated from CSV
+        this.knownStories = [];
     }
 
     async loadStoriesFromCSV() {
@@ -13,22 +80,32 @@ class StoryStructureScanner {
             }
             
             const csvText = await response.text();
-            // Split CSV text into lines and filter out empty lines
             this.knownStories = csvText
                 .split('\n')
                 .map(line => line.trim())
-                .filter(line => line && this.storyPattern.test(line));
+                .filter(line => {
+                    if (!line) return false;
+                    const isValid = this.storyPattern.test(line);
+                    if (!isValid) {
+                        console.warn(
+                            `Invalid story name in CSV: "${line}". ` +
+                            `First segment must contain only letters and start with capital. ` +
+                            `After a slash, segments can start with numbers or capitals ` +
+                            `and include letters, numbers, hyphens, and underscores.`
+                        );
+                    }
+                    return isValid;
+                });
                 
             if (this.knownStories.length === 0) {
                 console.warn('No valid stories found in stories.csv');
             }
         } catch (error) {
             console.error('Error loading stories.csv:', error);
-            // Fallback to default stories if CSV fails to load
             this.knownStories = ['DarkestNight'];
         }
     }
-
+    
     async checkFileExists(url) {
         try {
             const response = await fetch(url, { method: 'HEAD' });
@@ -57,7 +134,7 @@ class StoryStructureScanner {
 
     async scanEpisodes(storyName) {
         const episodes = [];
-        let episodeNum = 0;
+        let episodeNum = 1;
         let continueScanning = true;
 
         while (continueScanning && episodeNum <= 99) {
@@ -72,7 +149,7 @@ class StoryStructureScanner {
                 this.checkFileExists(episodePath)
             ]);
 
-            if (contentsExists && episodeExists) {
+            if (contentsExists || episodeExists) {
                 episodes.push(episodeDir);
                 episodeNum++;
             } else {
@@ -88,12 +165,24 @@ class StoryNavigator {
     constructor() {
         this.scanner = new StoryStructureScanner();
         this.currentStory = null;
-        this.episodeCache = new Map(); // Cache for episode content
+        this.episodeCache = new Map();
+        this.markdownRenderer = new MarkdownRenderer();
     }
 
     async initialize() {
         const stories = await this.scanner.scanStories();
         this.populateStoryList(stories);
+    }
+
+    formatStoryTitle(name) {
+        // Format for display only - split by slash and process each part
+        return name
+            .split('/')
+            .map(part => {
+                // Preserve numbers but add spaces before capital letters
+                return part.replace(/([A-Z])/g, ' $1').trim();
+            })
+            .join(' / ');
     }
 
     populateStoryList(stories) {
@@ -104,8 +193,12 @@ class StoryNavigator {
             const li = document.createElement('li');
             li.classList.add('story-entry');
             li.style.animationDelay = `${index * 0.1}s`;
+            
+            // Use data-story-path for the actual file path
             li.innerHTML = `
-                <button class="story-button" data-story="${storyName}">
+                <button class="story-button" 
+                        data-story-path="${storyName}"
+                        data-story-display="${this.formatStoryTitle(storyName)}">
                     ${this.formatStoryTitle(storyName)}
                 </button>
             `;
@@ -113,12 +206,13 @@ class StoryNavigator {
         });
     }
 
-    async loadEpisodes(storyName) {
+    async loadEpisodes(storyPath) {
         const episodeList = document.querySelector('.episode-entries');
         episodeList.innerHTML = '<li class="loading">Scanning episodes...</li>';
 
         try {
-            const episodes = await this.scanner.scanEpisodes(storyName);
+            // Use exact story path for file operations
+            const episodes = await this.scanner.scanEpisodes(storyPath);
             episodeList.innerHTML = '';
 
             episodes.forEach((episodeName, index) => {
@@ -127,7 +221,7 @@ class StoryNavigator {
                 li.style.animationDelay = `${index * 0.1}s`;
                 li.innerHTML = `
                     <button class="episode-button" 
-                            data-story="${storyName}" 
+                            data-story-path="${storyPath}" 
                             data-episode="${episodeName}">
                         Episode ${parseInt(episodeName)}
                     </button>
@@ -144,67 +238,83 @@ class StoryNavigator {
         }
     }
 
-    async loadEpisodeContent(storyName, episodeName) {
-        const cacheKey = `${storyName}/${episodeName}`;
+    async loadEpisodeContent(storyPath, episodeName) {
+        // Use exact paths for file operations
+        const cacheKey = `${storyPath}/${episodeName}`;
         
-        // Check cache first
         if (this.episodeCache.has(cacheKey)) {
             return this.episodeCache.get(cacheKey);
         }
 
         try {
-            const contentsPath = `/${storyName}/${episodeName}/Contents.md`;
-            const episodePath = `/${storyName}/${episodeName}/Episode.md`;
+            const episodePath = `/${storyPath}/${episodeName}/Episode.md`;
 
-            const [contentsResponse, episodeResponse] = await Promise.all([
-                fetch(contentsPath),
+            const [episodeResponse] = await Promise.all([
                 fetch(episodePath)
             ]);
 
-            const [contents, episode] = await Promise.all([
-                contentsResponse.text(),
-                episodeResponse.text()
-            ]);
+            if (!episodeResponse.ok) {
+                throw new Error('Failed to load episode files');
+            }
 
-            const content = {
-                contents,
-                episode
-            };
-
-            // Cache the content
-            this.episodeCache.set(cacheKey, content);
-            return content;
+            try {
+                const content = {
+                    episode: episodeResponse.ok ? 
+                        this.markdownRenderer.render(await episodeResponse.text()) : '',
+                    hasEpisode: episodeResponse.ok
+                };
+    
+                this.episodeCache.set(cacheKey, content);
+                return content;
+            } catch (error) {
+                console.error('Error loading episode content:', error);
+                throw error;
+            }
         } catch (error) {
             console.error('Error loading episode content:', error);
-            throw new Error('Failed to load episode content');
+            throw error;
         }
-    }
-
-    formatStoryTitle(name) {
-        return name.replace(/([A-Z])/g, ' $1').trim();
     }
 }
 
-// Initialize the application
+// Add lightbox functionality
+function openLightbox(img) {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.onclick = () => lightbox.remove();
+    
+    const imgClone = document.createElement('img');
+    imgClone.src = img.src;
+    imgClone.alt = img.alt;
+    
+    lightbox.appendChild(imgClone);
+    document.body.appendChild(lightbox);
+}
+
+// Update the event listeners
 document.addEventListener('DOMContentLoaded', async () => {
     const navigator = new StoryNavigator();
     await navigator.initialize();
 
     document.addEventListener('click', async (e) => {
         if (e.target.matches('.story-button')) {
-            const storyName = e.target.dataset.story;
-            document.querySelector('.current-story-title').textContent = 
-                navigator.formatStoryTitle(storyName);
-            await navigator.loadEpisodes(storyName);
+            const storyPath = e.target.dataset.storyPath;
+            const storyDisplay = e.target.dataset.storyDisplay;
+            
+            // Update display title but use exact path for loading
+            document.querySelector('.current-story-title').textContent = storyDisplay;
+            await navigator.loadEpisodes(storyPath);
         }
         
         if (e.target.matches('.episode-button')) {
-            const { story, episode } = e.target.dataset;
+            const storyPath = e.target.dataset.storyPath;
+            const episode = e.target.dataset.episode;
             const contentDisplay = document.querySelector('.content-display');
-            contentDisplay.innerHTML = `Loading ${episode} of ${story}...`;
+            
+            contentDisplay.innerHTML = `Loading ${episode} of ${storyPath}...`;
             
             try {
-                const content = await navigator.loadEpisodeContent(story, episode);
+                const content = await navigator.loadEpisodeContent(storyPath, episode);
                 contentDisplay.innerHTML = `
                     <div class="episode-content">
                         <div class="contents-section">
@@ -220,7 +330,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             } catch (error) {
                 contentDisplay.innerHTML = `
                     <div class="error-message">
-                        Failed to load episode content
+                        Failed to load episode content: ${error.message}
                     </div>
                 `;
             }

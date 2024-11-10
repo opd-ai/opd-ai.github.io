@@ -101,6 +101,46 @@ h1, h2, h3 {
     min-height: 400px;
 }
 
+.episode-content {
+    display: grid;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* When both contents are present */
+.both-contents .episode-content {
+    grid-template-columns: 1fr 2fr;
+}
+
+/* When only one type of content is present */
+.contents-only .episode-content,
+.episode-only .episode-content {
+    grid-template-columns: 1fr;
+}
+
+.contents-section,
+.episode-section {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .both-contents .episode-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.error-message {
+    color: #ff6b6b;
+    padding: 1rem;
+    background: rgba(255, 107, 107, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
 @keyframes slideIn {
     from {
         opacity: 0;
