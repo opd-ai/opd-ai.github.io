@@ -108,30 +108,64 @@ blockquote p {
     margin: 0;
 }
 
-/* Original Hero Section */
+/* Enhanced Hero Section */
 .hero {
-    min-height: 60vh;
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                    url('/assets/images/hero-bg.jpg');
+    min-height: 70vh; /* Increased height for more impact */
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                      url('/assets/images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 2rem;
+    padding: 3rem; /* Increased padding for better spacing */
+    color: var(--text-light);
+    position: relative; /* Added for pseudo-elements */
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 4rem; /* Increased font size for the title */
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px var(--shadow-color);
+    text-shadow: 3px 3px 6px var(--shadow-color); /* Enhanced shadow for better readability */
+    z-index: 1; /* Ensure the text is above background */
 }
 
 .hero p {
-    font-size: 1.2rem;
-    max-width: 600px;
+    font-size: 1.5rem; /* Increased font size for better readability */
+    max-width: 800px; /* Wider max width for longer text */
     margin: 0 auto 2rem;
+    z-index: 1; /* Ensure the text is above background */
+}
+
+/* Overlay for Hero Section */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better contrast */
+    z-index: 0; /* Behind the text */
+    border-radius: 8px; /* Rounded corners for a softer look */
+}
+
+/* Button Styling */
+.hero .button {
+    background: var(--accent-purple);
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    margin-top: 1rem;
+}
+
+.hero .button:hover {
+    background: var(--accent-gold); /* Change color on hover */
+    transform: translateY(-2px); /* Slight lift effect */
 }
 
 /* Original Layout Classes */
@@ -280,7 +314,7 @@ blockquote p {
 }
 
 .rss-button:hover {
-    background: var(--accent-purple-light);
+    background: var(--accent-gold);
 }
 
 .pdf-download-section {

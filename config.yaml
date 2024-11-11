@@ -1,0 +1,4 @@
+base_url: "https://opd-ai.github.io"
+base_dir: "."
+csv_path: "assets/csv/stories.csv"
+feed_path: "feed.xml"
