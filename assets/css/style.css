@@ -342,6 +342,24 @@ blockquote p {
     border-bottom: none;
 }
 
+/* Add these styles to ensure text is selectable */
+.hero {
+    user-select: text; /* Explicitly enable text selection */
+    position: relative;
+}
+
+.hero h1,
+.hero p {
+    position: relative;
+    z-index: 2; /* Ensure text is above the overlay */
+    user-select: text; /* Explicitly enable text selection */
+}
+
+.hero::before {
+    z-index: 1; /* Keep overlay below the text */
+    pointer-events: none; /* Prevent overlay from blocking interactions */
+}
+
 /* Original Animations */
 @keyframes slideIn {
     from {
