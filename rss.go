@@ -17,6 +17,67 @@ import (
 	"github.com/yuin/goldmark/text"
 )
 
+import (
+    "path/filepath"
+    "github.com/sabhiram/go-gitignore"
+)
+
+// Add this new function to check if paths should be ignored
+func newGitIgnore(baseDir string) (*ignore.GitIgnore, error) {
+    gitignorePath := filepath.Join(baseDir, ".gitignore")
+    if _, err := os.Stat(gitignorePath); err != nil {
+        if os.IsNotExist(err) {
+            // If .gitignore doesn't exist, return a matcher that ignores nothing
+            return ignore.CompileIgnoreLines([]string{}...)
+        }
+        return nil, fmt.Errorf("checking .gitignore: %w", err)
+    }
+    return ignore.CompileIgnoreFileAndLines(gitignorePath)
+}
+
+
+
+// Modify readStoriesFromCSV to use gitignore
+func readStoriesFromCSV(filename string, baseDir string) ([]Story, error) {
+    // Initialize gitignore
+    ignorer, err := newGitIgnore(baseDir)
+    if err != nil {
+        return nil, fmt.Errorf("setting up gitignore: %w", err)
+    }
+
+    file, err := os.Open(filename)
+    if err != nil {
+        return nil, fmt.Errorf("opening CSV file: %w", err)
+    }
+    defer file.Close()
+
+    var stories []Story
+    scanner := bufio.NewScanner(file)
+
+    for scanner.Scan() {
+        path := scanner.Text()
+        
+        // Check if the path should be ignored
+        if ignorer.MatchesPath(path) {
+            continue
+        }
+
+        parts := strings.Split(path, "/")
+        if len(parts) != 2 {
+            continue
+        }
+
+        // Rest of the function remains the same...
+        // [existing code]
+    }
+
+    if err := scanner.Err(); err != nil {
+        return nil, fmt.Errorf("scanning CSV: %w", err)
+    }
+
+    return stories, nil
+}
+
 type Story struct {
 	Path        string
 	Campaign    string
@@ -81,33 +142,56 @@ func calculatePublishDate(story Story, baseDate time.Time) time.Time {
 }
 
 func getEpisodePaths(baseDir, storyPath string) ([]string, error) {
-	storyDir := filepath.Join(baseDir, storyPath)
-	var episodePaths []string
+    storyDir := filepath.Join(baseDir, storyPath)
+    var episodePaths []string
 
-	// Look for directories matching the pattern XX_Episode
-	for i := 0; i <= 99; i++ { // Assuming max 100 episodes
-		episodeDir := filepath.Join(storyDir, fmt.Sprintf("%02d_Episode", i))
-		if _, err := os.Stat(episodeDir); err == nil {
-			episodePaths = append(episodePaths, episodeDir)
-		}
-	}
+    // Initialize gitignore
+    ignorer, err := newGitIgnore(baseDir)
+    if err != nil {
+        return nil, fmt.Errorf("setting up gitignore: %w", err)
+    }
 
-	if len(episodePaths) == 0 {
-		return nil, fmt.Errorf("no episode directories found in %s", storyDir)
-	}
+    // Look for directories matching the pattern XX_Episode
+    for i := 0; i <= 99; i++ { // Assuming max 100 episodes
+        episodeDir := filepath.Join(storyDir, fmt.Sprintf("%02d_Episode", i))
+        
+        // Check if the path should be ignored
+        relPath, err := filepath.Rel(baseDir, episodeDir)
+        if err != nil {
+            continue
+        }
+        
+        if ignorer.MatchesPath(relPath) {
+            continue
+        }
 
-	return episodePaths, nil
+        if _, err := os.Stat(episodeDir); err == nil {
+            episodePaths = append(episodePaths, episodeDir)
+        }
+    }
+
+    if len(episodePaths) == 0 {
+        return nil, fmt.Errorf("no episode directories found in %s", storyDir)
+    }
+
+    return episodePaths, nil
 }
 
 func readStoriesFromCSV(filename string, baseDir string) ([]Story, error) {
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, fmt.Errorf("opening CSV file: %w", err)
-	}
-	defer file.Close()
+    // Initialize gitignore
+    ignorer, err := newGitIgnore(baseDir)
+    if err != nil {
+        return nil, fmt.Errorf("setting up gitignore: %w", err)
+    }
 
-	var stories []Story
-	scanner := bufio.NewScanner(file)
+    file, err := os.Open(filename)
+    if err != nil {
+        return nil, fmt.Errorf("opening CSV file: %w", err)
+    }
+    defer file.Close()
+
+    var stories []Story
+    scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
 		path := scanner.Text()
