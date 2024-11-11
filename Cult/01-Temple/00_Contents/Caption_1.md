@@ -1,0 +1,1 @@
+![A Victorian-era map showing the Temple of Infinite Madness layout, featuring all 13 regions with eldritch symbols and dark stains. Gothic architectural details blend with cosmic horror elements. Lovecraftian geometries and impossible angles suggest reality distortion. Aged parchment with blood-red ink annotations.](map_caption_1.jpeg)

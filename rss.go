@@ -11,71 +11,24 @@ import (
 	//    "sort"
 
 	"github.com/gorilla/feeds"
+	"github.com/sabhiram/go-gitignore"
 	"github.com/spf13/viper"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/text"
 )
 
-import (
-    "path/filepath"
-    "github.com/sabhiram/go-gitignore"
-)
-
 // Add this new function to check if paths should be ignored
 func newGitIgnore(baseDir string) (*ignore.GitIgnore, error) {
-    gitignorePath := filepath.Join(baseDir, ".gitignore")
-    if _, err := os.Stat(gitignorePath); err != nil {
-        if os.IsNotExist(err) {
-            // If .gitignore doesn't exist, return a matcher that ignores nothing
-            return ignore.CompileIgnoreLines([]string{}...)
-        }
-        return nil, fmt.Errorf("checking .gitignore: %w", err)
-    }
-    return ignore.CompileIgnoreFileAndLines(gitignorePath)
-}
-
-
-
-// Modify readStoriesFromCSV to use gitignore
-func readStoriesFromCSV(filename string, baseDir string) ([]Story, error) {
-    // Initialize gitignore
-    ignorer, err := newGitIgnore(baseDir)
-    if err != nil {
-        return nil, fmt.Errorf("setting up gitignore: %w", err)
-    }
-
-    file, err := os.Open(filename)
-    if err != nil {
-        return nil, fmt.Errorf("opening CSV file: %w", err)
-    }
-    defer file.Close()
-
-    var stories []Story
-    scanner := bufio.NewScanner(file)
-
-    for scanner.Scan() {
-        path := scanner.Text()
-        
-        // Check if the path should be ignored
-        if ignorer.MatchesPath(path) {
-            continue
-        }
-
-        parts := strings.Split(path, "/")
-        if len(parts) != 2 {
-            continue
-        }
-
-        // Rest of the function remains the same...
-        // [existing code]
-    }
-
-    if err := scanner.Err(); err != nil {
-        return nil, fmt.Errorf("scanning CSV: %w", err)
-    }
-
-    return stories, nil
+	gitignorePath := filepath.Join(baseDir, ".gitignore")
+	if _, err := os.Stat(gitignorePath); err != nil {
+		if os.IsNotExist(err) {
+			// If .gitignore doesn't exist, return a matcher that ignores nothing
+			return ignore.CompileIgnoreLines([]string{}...), nil
+		}
+		return nil, fmt.Errorf("checking .gitignore: %w", err)
+	}
+	return ignore.CompileIgnoreFileAndLines(gitignorePath)
 }
 
 type Story struct {
@@ -142,59 +95,65 @@ func calculatePublishDate(story Story, baseDate time.Time) time.Time {
 }
 
 func getEpisodePaths(baseDir, storyPath string) ([]string, error) {
-    storyDir := filepath.Join(baseDir, storyPath)
-    var episodePaths []string
+	storyDir := filepath.Join(baseDir, storyPath)
+	var episodePaths []string
 
-    // Initialize gitignore
-    ignorer, err := newGitIgnore(baseDir)
-    if err != nil {
-        return nil, fmt.Errorf("setting up gitignore: %w", err)
-    }
+	// Initialize gitignore
+	ignorer, err := newGitIgnore(baseDir)
+	if err != nil {
+		return nil, fmt.Errorf("setting up gitignore: %w", err)
+	}
 
-    // Look for directories matching the pattern XX_Episode
-    for i := 0; i <= 99; i++ { // Assuming max 100 episodes
-        episodeDir := filepath.Join(storyDir, fmt.Sprintf("%02d_Episode", i))
-        
-        // Check if the path should be ignored
-        relPath, err := filepath.Rel(baseDir, episodeDir)
-        if err != nil {
-            continue
-        }
-        
-        if ignorer.MatchesPath(relPath) {
-            continue
-        }
+	// Look for directories matching the pattern XX_Episode
+	for i := 0; i <= 99; i++ { // Assuming max 100 episodes
+		episodeDir := filepath.Join(storyDir, fmt.Sprintf("%02d_Episode", i))
 
-        if _, err := os.Stat(episodeDir); err == nil {
-            episodePaths = append(episodePaths, episodeDir)
-        }
-    }
+		// Check if the path should be ignored
+		relPath, err := filepath.Rel(baseDir, episodeDir)
+		if err != nil {
+			continue
+		}
 
-    if len(episodePaths) == 0 {
-        return nil, fmt.Errorf("no episode directories found in %s", storyDir)
-    }
+		if ignorer.MatchesPath(relPath) {
+			continue
+		}
 
-    return episodePaths, nil
+		if _, err := os.Stat(episodeDir); err == nil {
+			episodePaths = append(episodePaths, episodeDir)
+		}
+	}
+
+	if len(episodePaths) == 0 {
+		return nil, fmt.Errorf("no episode directories found in %s", storyDir)
+	}
+
+	return episodePaths, nil
 }
 
 func readStoriesFromCSV(filename string, baseDir string) ([]Story, error) {
-    // Initialize gitignore
-    ignorer, err := newGitIgnore(baseDir)
-    if err != nil {
-        return nil, fmt.Errorf("setting up gitignore: %w", err)
-    }
+	// Initialize gitignore
+	ignorer, err := newGitIgnore(baseDir)
+	if err != nil {
+		return nil, fmt.Errorf("setting up gitignore: %w", err)
+	}
 
-    file, err := os.Open(filename)
-    if err != nil {
-        return nil, fmt.Errorf("opening CSV file: %w", err)
-    }
-    defer file.Close()
+	file, err := os.Open(filename)
+	if err != nil {
+		return nil, fmt.Errorf("opening CSV file: %w", err)
+	}
+	defer file.Close()
 
-    var stories []Story
-    scanner := bufio.NewScanner(file)
+	var stories []Story
+	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
 		path := scanner.Text()
+
+		// Check if the path should be ignored
+		if ignorer.MatchesPath(path) {
+			continue
+		}
+
 		parts := strings.Split(path, "/")
 		if len(parts) != 2 {
 			continue

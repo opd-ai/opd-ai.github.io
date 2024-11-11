@@ -1,0 +1,1 @@
+![A collection of cursed Victorian scientific instruments arranged in a ritual pattern - theodolites, sextants, and compasses corrupted by cosmic horror elements. Tentacles and eyes emerge from brass and copper machinery. Dark energy swirls around the instruments against a backdrop of aged leather and wood.](illustration_caption_2.jpeg)
