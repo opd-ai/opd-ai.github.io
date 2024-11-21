@@ -1,0 +1,1 @@
+![Ancient stone steps ascending through reality-warped jungle. Multiple moons visible in sky, stone pillars with moving eldritch symbols, floating rocks defying gravity. Victorian-era explorers in foreground for scale. Photorealistic, cosmic horror, architectural impossibility. Style of Piranesi meets Lovecraft.](illustration_caption_3.jpeg)
