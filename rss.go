@@ -308,6 +308,10 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error writing feed: %v\n", err)
 		os.Exit(1)
 	}
+	if err := sitemapmain(config.BaseURL, config.BaseDir); err != nil {
+		fmt.Fprintf(os.Stderr, "Error writing sitemap: %v\n", err)
+		os.Exit(1)
+	}
 
 	fmt.Println("Successfully generated RSS feed!")
 }
