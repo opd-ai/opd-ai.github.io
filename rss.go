@@ -8,10 +8,11 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
 	//    "sort"
 
 	"github.com/gorilla/feeds"
-	"github.com/sabhiram/go-gitignore"
+	ignore "github.com/sabhiram/go-gitignore"
 	"github.com/spf13/viper"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/ast"
@@ -310,6 +311,10 @@ func main() {
 	}
 	if err := sitemapmain(config.BaseURL, config.BaseDir); err != nil {
 		fmt.Fprintf(os.Stderr, "Error writing sitemap: %v\n", err)
+		os.Exit(1)
+	}
+	if err := robotsmain(config.BaseDir); err != nil {
+		fmt.Fprintf(os.Stderr, "Error writing robots: %v\n", err)
 		os.Exit(1)
 	}
 

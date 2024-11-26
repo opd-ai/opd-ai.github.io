@@ -1,0 +1,1 @@
+![The Mask Maker's Sanctum with floating stone masks, autonomous ancient tools carving faces, and reality-warping mirrors. Living stone veins pulse with eldritch energy. Partially transformed explorer examining their reflection showing multiple shifting faces. Photorealistic, body horror, cosmic dread. Style of HR Giger meets Victorian Gothic.](illustration_caption_2.jpeg)
