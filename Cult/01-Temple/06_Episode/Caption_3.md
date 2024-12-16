@@ -1,0 +1,1 @@
+![The Librarian in final form, a being composed of swirling text and living books, emerging from a vortex of knowledge. Surrounded by floating scrolls and crystallized thoughts. Gothic horror library scene with glowing text streams. Victorian arcane study meets eldritch transformation.](illustration_caption_3.jpeg)

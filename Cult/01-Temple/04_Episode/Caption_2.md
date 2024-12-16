@@ -1,0 +1,1 @@
+![A vast, impossibly tall cathedral space stretching into cosmic void, lined with mile-high statues of alien gods. Floating geometric shapes and constellation patterns hover in the air. Victorian-era explorers dwarfed by scale. Cosmic horror meets religious architecture, dramatic lighting with star-like points of light. Hyper-detailed, atmospheric.](illustration_caption_2.jpeg)

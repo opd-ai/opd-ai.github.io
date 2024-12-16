@@ -6,9 +6,6 @@ Disallow: /.vscode
 Disallow: /rss
 Disallow: /.bak
 Disallow: /script.md
-Disallow: /Cult/01-Temple/04_Episode
-Disallow: /Cult/01-Temple/05_Episode
-Disallow: /Cult/01-Temple/06_Episode
 Disallow: /Cult/01-Temple/07_Episode
 Disallow: /Cult/01-Temple/08_Episode
 Disallow: /Cult/01-Temple/09_Episode

@@ -1,0 +1,1 @@
+![An impossibly vast gothic library interior where books flutter like moths. Floating text and glowing knowledge streams spiral through the air. Victorian-era scholars amid shifting bookshelves that breathe and move. Lovecraftian horror meets magical library, with ethereal lighting and impossible architecture.](map_caption_1.jpeg)

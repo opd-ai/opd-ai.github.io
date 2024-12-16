@@ -1,0 +1,1 @@
+![The Drowned Oracle in final form, a being of water and consciousness emerging from a whirlpool altar. Surrounded by floating memory pearls and thought fragments. Dark cosmic horror underwater scene with bioluminescent highlights. Victorian deep sea exploration meets eldritch transformation.](illustration_caption_3.jpeg)

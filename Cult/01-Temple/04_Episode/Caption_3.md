@@ -1,0 +1,1 @@
+![The Idol Forge chamber with a massive reality-bending furnace glowing with stellar energy. Star-metal and crystallized worshippers scattered about. The Stone Prophet figure merged with divine geometry speaks to adventurers. Dark cosmic horror aesthetic with elements of industrial Victorian craft. Dramatic lighting, highly detailed.](illustration_caption_3.jpeg)
