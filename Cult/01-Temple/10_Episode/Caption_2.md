@@ -1,0 +1,1 @@
+![A vast cosmic chamber where reality visibly tears and reforms. Multiple portals showing impossible dimensions float in space. Reality fountains spew pure creation energy. Victorian-era scientific instruments merged with cosmic horror elements. The walls show multiple physics laws simultaneously, with floating crystalline truth fragments.](illustration_caption_2.jpeg)

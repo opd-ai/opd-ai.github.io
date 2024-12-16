@@ -1,0 +1,1 @@
+![The First Experiment in its final form, a perfect fusion of flesh and evolution. Surrounded by mutation waves and organic machinery. Anatomical horror meets scientific precision. Victorian laboratory equipment merged with living tissue. Bioluminescent horror scene with mutation effects.](illustration_caption_3.jpeg)

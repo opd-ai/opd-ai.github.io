@@ -1,0 +1,1 @@
+![A vast biological laboratory chamber with walls of living tissue and pulsing organic machinery. Tubes of flowing fluids connect growth pods filled with mutating specimens. Victorian-era scientific equipment merged with living flesh. Biopunk horror meets gothic architecture, with eerie bioluminescent lighting.](illustration_caption_2.jpeg)

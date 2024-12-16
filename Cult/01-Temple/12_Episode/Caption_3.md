@@ -1,0 +1,1 @@
+![A Void Siren entity - a beautiful but terrifying being made of peaceful void-stuff, reaching out with tendrils of comfortable nothingness. Victorian scientific instruments show dangerous reality readings nearby. The background shows multiple adventurers already peacefully dissolving into the void. Horror meets serenity.](illustration_caption_3.jpeg)

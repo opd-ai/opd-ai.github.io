@@ -1,0 +1,1 @@
+![The Core Guardian in its final form as a being of pure gateway energy. Multiple portals orbit around its form, showing glimpses of impossible dimensions. Victorian scientific horror meets cosmic horror. Void streams visible as dark purple energy threads. Multiple realities visible through dimensional tears in background.](illustration_caption_3.jpeg)

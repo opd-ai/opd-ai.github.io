@@ -1,0 +1,1 @@
+![A vast void space with floating islands of crystallized memories. Victorian-era explorers tethered together by glowing reality threads. Memory crystals emit soft light in the darkness. The void itself seems to bend and twist around points of preserved reality. Ethereal horror elements mixed with steampunk survival gear.](illustration_caption_2.jpeg)

@@ -1,0 +1,1 @@
+![The Sealing Grounds during the final ritual - a massive circular chamber with reality-forged binding circles glowing with void energy. Victorian-era adventurers channel power through ancient artifacts while shadows and light battle around them. The scene captures both sacrifice and salvation.](illustration_caption_3.jpeg)
