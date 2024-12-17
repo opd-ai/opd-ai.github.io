@@ -71,8 +71,7 @@ class IllustrationManager {
         const markdownRenderer = new MarkdownRenderer();
         markdownRenderer.setStoryPath(storyPath);
 
-        // Try to load Caption_1.md through Caption_3.md
-        for (let i = 1; i <= 3; i++) {
+        for (let i = 1; i <= 10; i++) {
             const captionPath = `/${storyPath}/${episodeName}/Caption_${i}.md`;
             try {
                 const response = await fetch(captionPath);
@@ -95,6 +94,58 @@ class IllustrationManager {
                 }
             } catch (error) {
                 console.log(`No Caption_${i}.md found`);
+            }
+        }
+
+        for (let i = 1; i <= 10; i++) {
+            const captionPath = `/${storyPath}/${episodeName}/${i}_Illustration.md`;
+            try {
+                const response = await fetch(captionPath);
+                if (response.ok) {
+                    const captionText = await response.text();
+                    // Extract the first image and its caption from the markdown
+                    const imgMatch = captionText.match(/!\[(.*?)\]\((.*?)\)/);
+                    if (imgMatch) {
+                        const [, altText, imagePath] = imgMatch;
+                        // Use the rest of the text as caption
+                        const caption = captionText
+                            .replace(/!\[(.*?)\]\((.*?)\)/, '') // Remove image markdown
+                            .trim();
+                        
+                        illustrations.push({
+                            imagePath: `/${storyPath}/${episodeName}/${imagePath.replace(/^\/+/, '')}`,
+                            caption: caption || altText
+                        });
+                    }
+                }
+            } catch (error) {
+                console.log(`No ${i}_Illustration.md found`);
+            }
+        }
+        
+        for (let i = 1; i <= 10; i++) {
+            const captionPath = `/${storyPath}/${episodeName}/${i}_CoverIllustration.md`;
+            try {
+                const response = await fetch(captionPath);
+                if (response.ok) {
+                    const captionText = await response.text();
+                    // Extract the first image and its caption from the markdown
+                    const imgMatch = captionText.match(/!\[(.*?)\]\((.*?)\)/);
+                    if (imgMatch) {
+                        const [, altText, imagePath] = imgMatch;
+                        // Use the rest of the text as caption
+                        const caption = captionText
+                            .replace(/!\[(.*?)\]\((.*?)\)/, '') // Remove image markdown
+                            .trim();
+                        
+                        illustrations.push({
+                            imagePath: `/${storyPath}/${episodeName}/${imagePath.replace(/^\/+/, '')}`,
+                            caption: caption || altText
+                        });
+                    }
+                }
+            } catch (error) {
+                console.log(`No ${i}_CoverIllustration.md found`);
             }
         }
 
