@@ -242,7 +242,7 @@ class StoryStructureScanner {
 
     async loadStoriesFromCSV() {
         try {
-            const response = await fetch('/assets/csv/stories.csv');
+            const response = await fetch('assets/csv/stories.csv');
             if (!response.ok) {
                 throw new Error('Failed to load stories.csv');
             }
@@ -308,8 +308,8 @@ class StoryStructureScanner {
         while (continueScanning && episodeNum <= 99) {
             const paddedNum = episodeNum.toString().padStart(2, '0');
             const episodeDir = `${paddedNum}_Episode`;
-            const contentsPath = `/${storyName}/${episodeDir}/Contents.md`;
-            const episodePath = `/${storyName}/${episodeDir}/Episode.md`;
+            const contentsPath = `${storyName}/${episodeDir}/Contents.md`;
+            const episodePath = `${storyName}/${episodeDir}/Episode.md`;
 
             // Check if both required files exist
             const [contentsExists, episodeExists] = await Promise.all([
@@ -418,7 +418,7 @@ class StoryNavigator {
         try {
             // Load episode content, illustrations, and check PDF availability concurrently
             const [episodeResponse, illustrations, hasPDF] = await Promise.all([
-                fetch(`/${storyPath}/${episodeName}/Episode.md`),
+                fetch(`${storyPath}/${episodeName}/Episode.md`),
                 this.illustrationManager.scanForIllustrations(storyPath, episodeName),
                 this.pdfManager.checkPDFExists(storyPath, episodeName)
             ]);

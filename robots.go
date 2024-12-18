@@ -124,5 +124,5 @@ func robotsmain(docroot string) error {
 	}
 
 	// Write to robots.txt
-	return os.WriteFile("robots.txt", []byte(content), 0644)
+	return os.WriteFile("robots.txt", []byte(content), 0o644)
 }

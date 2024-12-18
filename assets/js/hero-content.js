@@ -61,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             // Load both markdown files simultaneously
             const [headlineContent, introContent] = await Promise.all([
-                fetchMarkdownContent('/assets/md/headline.md'),
-                fetchMarkdownContent('/assets/md/intro.md')
+                fetchMarkdownContent('assets/md/headline.md'),
+                fetchMarkdownContent('assets/md/intro.md')
             ]);
 
             // Update headline if element exists

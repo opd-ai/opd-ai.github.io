@@ -131,7 +131,7 @@ func getEpisodePaths(baseDir, storyPath string) ([]string, error) {
 	return episodePaths, nil
 }
 
-func readStoriesFromCSV(filename string, baseDir string) ([]Story, error) {
+func readStoriesFromCSV(filename, baseDir string) ([]Story, error) {
 	// Initialize gitignore
 	ignorer, err := newGitIgnore(baseDir)
 	if err != nil {
@@ -305,7 +305,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	if err := os.WriteFile(config.FeedPath, []byte(rss), 0644); err != nil {
+	if err := os.WriteFile(config.FeedPath, []byte(rss), 0o644); err != nil {
 		fmt.Fprintf(os.Stderr, "Error writing feed: %v\n", err)
 		os.Exit(1)
 	}

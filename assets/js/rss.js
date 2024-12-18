@@ -20,7 +20,7 @@ class RSSGenerator {
 
     async loadStories() {
         try {
-            const response = await fetch('/assets/csv/stories.csv');
+            const response = await fetch('assets/csv/stories.csv');
             const csvText = await response.text();
             return csvText
                 .split('\n')
@@ -71,7 +71,7 @@ class RSSGenerator {
 
     async processStory(storyPath) {
         try {
-            const indexResponse = await fetch(`/${storyPath}/index.html`);
+            const indexResponse = await fetch(`${storyPath}/index.html`);
             if (!indexResponse.ok) return;
 
             const indexHTML = await indexResponse.text();
@@ -95,7 +95,7 @@ class RSSGenerator {
 
     async processEpisode(storyPath, episodeLink) {
         try {
-            const response = await fetch(`/${storyPath}/${episodeLink}/index.html`);
+            const response = await fetch(`${storyPath}/${episodeLink}/index.html`);
             if (!response.ok) return;
 
             const html = await response.text();

@@ -132,7 +132,7 @@ func generateHTMLSitemap(sitemap SiteMap, outputPath string) error {
 	return tmpl.Execute(f, sitemap)
 }
 
-func sitemapmain(baseURL string, dir string) error {
+func sitemapmain(baseURL, dir string) error {
 	// Load .gitignore if it exists
 	ignore, err := newGitIgnore(dir)
 	if err != nil {
