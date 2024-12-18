@@ -1,0 +1,1 @@
+![The plantation's study at night, moonlight streaming through windows. Ancient books and star charts scattered across a Victorian desk, while strange shadows dance on wood-paneled walls. A ghostly figure appears in a mirror. Style: Atmospheric interior scene with supernatural elements, detailed architectural features.](illustration_caption_3.jpeg)

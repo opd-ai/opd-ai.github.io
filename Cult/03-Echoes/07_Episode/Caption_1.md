@@ -1,0 +1,1 @@
+![The Weather Spire's layout featuring the main tower, cloud chamber, and rogue cloud zone. Include storm pattern flows, calculation nodes, and perfect pressure points. Style: Meteorological blueprint meets cosmic mathematics, with weather systems transformed into eldritch patterns. Compass rose made of intersecting lightning bolts.](map_caption_1.jpeg)

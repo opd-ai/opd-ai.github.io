@@ -1,0 +1,1 @@
+![St. Bernard's Cathedral at night, massive gothic architecture illuminated by void tears in the sky. Sacred barriers of golden light protect refugees while void-touched nobles perform a dark ritual in the bell tower. Style: Gothic horror, dramatic lighting, magical effects, architectural detail.](illustration_caption_2.jpeg)

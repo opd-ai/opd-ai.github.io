@@ -1,0 +1,1 @@
+![An old music school basement filled with chaotic sheet music and traditional instruments, while through the window perfect geometric sound patterns try to invade. Marina teaches the lullaby to resistors. Style: Warm, emotional musical setting contrasting with cold mathematical patterns.](illustration_caption_2.jpeg)

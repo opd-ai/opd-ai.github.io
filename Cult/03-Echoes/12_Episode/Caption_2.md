@@ -1,0 +1,1 @@
+![The Grand Navigator stands atop the Path Citadel, surrounded by glowing mathematical equations and floating compass roses, while perfect geometric routes rotate below. A single wild path cuts defiantly through the calculated patterns. Style: Technical illustrations meet cosmic horror, with navigation symbols forming impossible path matrices.](illustration_caption_2.jpeg)

@@ -1,0 +1,1 @@
+![Grand Temple ritual chamber with Lady Ravencrest transforming into cosmic entity. Reality tears and time vortexes swirl around her while ancient architecture warps impossibly. Victorian-gothic meets cosmic horror with emphasis on power manifestation and reality distortion.](illustration_caption_3.jpeg)

@@ -1,0 +1,1 @@
+![The final moment as reality breaks free from pattern control - a cosmic scene of mathematical certainty shattering while natural chaos flows back into existence. Weather, time, dreams, and paths spiral into beautiful disorder. Style: Abstract cosmic art meets technical diagrams in moment of transformation.](illustration_caption_3.jpeg)

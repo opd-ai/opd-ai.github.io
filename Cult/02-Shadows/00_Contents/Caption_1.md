@@ -1,0 +1,1 @@
+![Victorian-era detective's desk with scattered evidence - aged documents, a magnifying glass, mysterious silver coins, and ritual masks. Candlelight casts ominous shadows, while tentacle-like patterns subtly emerge in the wallpaper behind. Style combines Victorian elegance with creeping cosmic horror elements.](map_caption_1.jpeg)

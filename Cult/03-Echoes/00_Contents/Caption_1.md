@@ -1,0 +1,1 @@
+![A grand mapping room showing interconnected locations of all twelve disciples, with geometric ley lines and mathematical formulas flowing between them. Style: Classic D&D world map with mathematical overlays, arcane annotations, and connection points marked with mystical symbols.](map_caption_1.jpeg)

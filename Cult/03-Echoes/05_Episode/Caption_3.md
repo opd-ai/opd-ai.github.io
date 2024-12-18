@@ -1,0 +1,1 @@
+![The confrontation between Old Gambler Jin's chaotic marketplace and the Pattern Merchants, where organic, vibrant trading meets cold mathematical precision in a bazaar divided between warmth and calculated emptiness. Style: Dynamic market scene with contrasting elements of human commerce and inhuman perfection.](illustration_caption_3.jpeg)

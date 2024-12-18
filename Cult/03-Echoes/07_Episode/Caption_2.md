@@ -1,0 +1,1 @@
+![Tempest atop the Weather Spire, surrounded by floating atmospheric equations and storm matrices, while perfect geometric lightning strikes below. A single playful cloud dances defiantly in the background. Style: Scientific weather illustrations meet cosmic horror, with mathematical symbols creating impossible atmospheric patterns.](illustration_caption_2.jpeg)

@@ -1,0 +1,1 @@
+![The clash between Sergeant Chaos's guerrilla forces and the Perfect Legion, where organic, chaotic combat meets geometric precision on a battlefield divided between shadow and mathematical light. Style: Dynamic battle scene with contrasting visual elements of order and chaos.](illustration_caption_3.jpeg)

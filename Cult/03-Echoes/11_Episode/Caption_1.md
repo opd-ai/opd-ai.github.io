@@ -1,0 +1,1 @@
+![The Dream Spire's layout featuring the main chamber, slumber sanctum, and wild nightmare zone. Include dream pattern flows, calculation nodes, and perfect vision points. Style: Dreamscape blueprint meets cosmic mathematics, with sleep systems transformed into eldritch patterns. Compass rose made of intersecting moonbeams and starlight.](map_caption_1.jpeg)

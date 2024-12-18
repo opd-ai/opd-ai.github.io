@@ -1,0 +1,1 @@
+![Transformed Moira floating in the manifestation chamber, her form shifting between states as cosmic energy crackles around her. Reality fragments visible in the background, showing glimpses of other dimensions. Style: Dark fantasy meets body horror, with emphasis on transformation and cosmic power.](illustration_caption_3.jpeg)

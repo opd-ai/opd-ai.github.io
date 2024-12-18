@@ -1,0 +1,1 @@
+![Dr. Flora Greenthumb in her pattern greenhouse, surrounded by floating botanical equations and growth matrices, while geometric plants grow in perfect symmetry. A wild rose blooms defiantly in the foreground. Style: Victorian botanical illustrations meet cosmic horror, with mathematical symbols creating impossible growth patterns.](illustration_caption_2.jpeg)

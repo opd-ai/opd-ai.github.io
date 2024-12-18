@@ -1,0 +1,1 @@
+![Ancient underground chamber with Roman architecture, partially flooded. Void-corrupted symbols glow on the walls, while several robed figures perform a ritual. Corrupted alligators lurk in the water's shadows. Style: Dark fantasy meets gothic horror, eerie lighting, water reflections, ancient stonework detail.](illustration_caption_3.jpeg)

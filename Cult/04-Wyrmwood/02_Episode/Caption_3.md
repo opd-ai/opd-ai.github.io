@@ -1,0 +1,1 @@
+![A dimly lit underground ritual chamber beneath an abandoned cottage, with cultists in period-appropriate robes conducting a ceremony. Tommy is bound to an altar while reality tears open above, revealing impossible cosmic vistas. Style: Gothic horror meets cosmic terror, dramatic lighting with architectural details.](illustration_caption_3.jpeg)

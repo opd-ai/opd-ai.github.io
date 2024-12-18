@@ -1,0 +1,1 @@
+![The Twelve Disciples arranged in a geometric circle, each transformed by their domain of order, glowing with mathematical equations and surrounded by their elements (architecture, music, nature, etc.). In the center, an empty void representing the Unnamed. Style: Mystical, mathematical, geometric patterns, ethereal lighting.](illustration_caption_2.jpeg)

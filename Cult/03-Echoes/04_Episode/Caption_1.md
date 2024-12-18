@@ -1,0 +1,1 @@
+![The Strategic Citadel's layout featuring the war room, training grounds, and hidden sanctuary. Include geometric battle formations, tactical calculation engines, and perfect drill patterns. Style: Military blueprint meets arcane mathematics, with formation diagrams transformed into eldritch patterns. Compass rose made of crossing sword patterns.](map_caption_1.jpeg)

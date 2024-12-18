@@ -1,0 +1,1 @@
+![A dark palace archive room lit by ethereal light. Ancient tomes float in reality distortions while Lady Ravencrest's inhuman shadow performs a ritual. Victorian-gothic architecture meets cosmic horror with emphasis on books, magical energy, and reality tears.](illustration_caption_3.jpeg)

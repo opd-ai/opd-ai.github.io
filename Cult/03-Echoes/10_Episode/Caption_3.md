@@ -1,0 +1,1 @@
+![Doctor Logos in the Rational Citadel, surrounded by floating logical equations and consciousness matrices, while perfect geometric thoughts rotate below. A single wild dream flows defiantly through the background. Style: Victorian philosophical illustrations meet cosmic horror, with mathematical symbols creating impossible mental patterns.](illustration_caption_3.jpeg)

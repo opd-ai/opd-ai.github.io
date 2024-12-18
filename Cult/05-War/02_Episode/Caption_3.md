@@ -1,0 +1,1 @@
+![A military war room with strategic maps and communication equipment, where shadows move independently of objects. Officers in Victorian military uniforms examine documents while reality warps slightly around them. Style: Military precision meets supernatural horror, technical details with cosmic elements.](illustration_caption_3.jpeg)

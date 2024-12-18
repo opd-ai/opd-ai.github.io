@@ -1,0 +1,1 @@
+![The clash between The Star Sage's natural astronomy and the Pattern Stars, where organic celestial movement meets cold mathematical precision in skies divided between chaos and calculated existence. Style: Dynamic cosmic scene with contrasting elements of natural astronomy and artificial perfection.](illustration_caption_3.jpeg)

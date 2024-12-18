@@ -1,0 +1,1 @@
+![Master Chronos in the Clockwork Citadel, surrounded by floating temporal equations and time matrices, while perfect geometric clocks tick below. A single pocket watch runs backwards defiantly in the foreground. Style: Victorian clockwork illustrations meet cosmic horror, with mathematical symbols creating impossible temporal patterns.](illustration_caption_2.jpeg)

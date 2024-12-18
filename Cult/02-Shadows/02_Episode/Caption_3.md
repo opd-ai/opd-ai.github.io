@@ -1,0 +1,1 @@
+![A top-down map of the Museum of Ancient History in Victorian architectural style. Detailed floor plan showing main hall with dinosaur skeleton, exhibition wings, and maintenance tunnels. Includes annotations, compass rose, and decorative elements like gargoyles and architectural flourishes. Style: Antique technical drawing with sepia tones.](illustration_caption_3.jpeg)

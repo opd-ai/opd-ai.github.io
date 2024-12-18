@@ -1,0 +1,1 @@
+![The Symmetrical Gardens' layout featuring the main gardens, pattern greenhouse, and wild rose corner. Include growth pattern flows, calculation nodes, and perfect planting points. Style: Victorian garden blueprint meets cosmic mathematics, with plant layouts transformed into eldritch patterns. Compass rose made of intersecting flower patterns.](map_caption_1.jpeg)

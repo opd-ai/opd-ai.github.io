@@ -1,0 +1,1 @@
+![A Victorian cityscape at night, buildings ablaze, with multiple void tears hovering in the sky. Panicked citizens flee through the streets while void-corrupted beasts emerge from the tears. In the foreground, Captain Marina directs evacuation efforts. Style: Dark urban fantasy, dramatic lighting from fires, void energy effects, crowd dynamics.](illustration_caption_2.jpeg)

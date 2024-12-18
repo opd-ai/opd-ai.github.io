@@ -1,0 +1,1 @@
+![The battle between Old Gardener Chen's wild garden and the Pattern Plants, where organic, chaotic growth meets cold mathematical precision in a greenhouse divided between life and calculated existence. Style: Dynamic garden scene with contrasting elements of natural growth and artificial perfection.](illustration_caption_3.jpeg)

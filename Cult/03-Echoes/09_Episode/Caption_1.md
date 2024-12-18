@@ -1,0 +1,1 @@
+![The Celestial Observatory's layout featuring the main dome, calculation chamber, and wandering star zone. Include star pattern flows, calculation nodes, and perfect orbital points. Style: Astronomical blueprint meets cosmic mathematics, with celestial systems transformed into eldritch patterns. Compass rose made of intersecting telescope sights.](map_caption_1.jpeg)

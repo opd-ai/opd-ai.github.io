@@ -1,0 +1,1 @@
+![Epic battlefield scene of Victorian-gothic city under siege. Coalition forces advance through streets while reality tears float in sky. Cosmic horrors emerge from rifts while soldiers fight. Architecture shows both damage and reality distortion. Dawn lighting with blood-red sky.](illustration_caption_2.jpeg)

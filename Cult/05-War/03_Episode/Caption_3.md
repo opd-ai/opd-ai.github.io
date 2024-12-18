@@ -1,0 +1,1 @@
+![An ornate opera house with gold trim and red velvet, viewed from the upper boxes. Reality fractures visibly around a ritual being performed beneath the stage while nobles in evening wear observe from shadows. Victorian gothic architecture meets cosmic horror.](illustration_caption_3.jpeg)

@@ -1,0 +1,1 @@
+![Sarah's art studio - a riot of color and chaos in direct opposition to the mathematical order outside. Random paint splatters, assymetric sculptures, and abstract art covering walls. Through the window, the city's buildings align to perfect angles. Style: Expressionist art meets geometric horror.](illustration_caption_3.jpeg)

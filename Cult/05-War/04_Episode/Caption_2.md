@@ -1,0 +1,1 @@
+![A grand Victorian-gothic palace ballroom during an elaborate masked ball. Ornate chandeliers cast dramatic shadows while reality subtly distorts in corners. Nobles in masks dance while hidden cultists perform rituals beneath their feet. Architectural focus on marble, gold, and crystal with cosmic horror undertones.](illustration_caption_2.jpeg)

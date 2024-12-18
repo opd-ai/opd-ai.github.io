@@ -1,0 +1,1 @@
+![The confrontation between Elder Stormcaller's wild tempest and the Pattern Storms, where natural weather meets cold mathematical precision in skies divided between chaos and calculated existence. Style: Dynamic storm scene with contrasting elements of natural weather and artificial perfection.](illustration_caption_3.jpeg)

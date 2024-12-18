@@ -1,0 +1,1 @@
+![A hidden vault filled with naturally formed crystals and rough-cut gems, their organic beauty contrasting sharply with the perfect geometry visible through a window. Light refracts through the crystals creating random rainbow patterns. Style: Fantasy treasury meets natural geology, emphasis on organic shapes versus geometric perfection.](illustration_caption_3.jpeg)

@@ -1,0 +1,1 @@
+![The battle between The Time Keeper's natural flow and the Pattern Time, where organic temporal progression meets cold mathematical precision in a chamber divided between chaos and calculated existence. Style: Dynamic temporal scene with contrasting elements of natural time and artificial perfection.](illustration_caption_3.jpeg)

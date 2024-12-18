@@ -1,0 +1,1 @@
+![A Victorian-era study at night, illuminated by gaslight. A military officer's body slumped naturally at an ornate desk, surrounded by scattered papers. Strange symbols barely visible in fireplace ashes, with shadows that don't quite match the lighting. Style: Atmospheric mystery with subtle horror elements, detailed Victorian interior.](illustration_caption_2.jpeg)

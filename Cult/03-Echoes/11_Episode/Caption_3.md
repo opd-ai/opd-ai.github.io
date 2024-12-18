@@ -1,0 +1,1 @@
+![Madame Morpheus in the Dream Spire, surrounded by floating sleep equations and nightmare matrices, while perfect geometric visions rotate below. A single wild nightmare writhes defiantly through the background. Style: Victorian dream illustrations meet cosmic horror, with mathematical symbols creating impossible sleep patterns.](illustration_caption_3.jpeg)

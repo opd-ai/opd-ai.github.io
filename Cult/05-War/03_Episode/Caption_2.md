@@ -1,0 +1,1 @@
+![A grand Victorian ballroom with crystal chandeliers, elaborate architectural details, and nobles in formal attire. Reality subtly warps around the edges while masked figures exchange glances. Hidden cosmic horror elements beneath classical elegance, emphasis on light and shadow interplay.](illustration_caption_2.jpeg)

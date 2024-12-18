@@ -1,0 +1,1 @@
+![A grand antebellum plantation mansion at twilight, Spanish moss draped over ancient oaks. Strange geometric patterns in the overgrown gardens, while impossible shadows move across the wraparound veranda. The sky shows subtle cosmic anomalies. Style: Southern Gothic meets cosmic horror, photo-realistic with supernatural elements.](illustration_caption_2.jpeg)

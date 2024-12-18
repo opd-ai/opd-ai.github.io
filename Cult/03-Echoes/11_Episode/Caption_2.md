@@ -1,0 +1,1 @@
+![The battle between The Nightmare Sage's natural dreams and Pattern Sleep, where organic visions meet cold mathematical precision in a dreamscape divided between chaos and calculated existence. Style: Dynamic nightmare scene with contrasting elements of natural dreams and artificial perfection.](illustration_caption_2.jpeg)

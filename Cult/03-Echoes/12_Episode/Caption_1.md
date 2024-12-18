@@ -1,0 +1,1 @@
+![The Path Citadel's architecture featuring the main chamber, navigation sanctum, and wild path zone. Include route pattern flows, calculation nodes, and perfect path points. Style: Technical blueprint meets eldritch geometry, with navigation systems transformed into cosmic patterns. Compass rose made of mathematical symbols and starlight equations.](map_caption_1.jpeg)

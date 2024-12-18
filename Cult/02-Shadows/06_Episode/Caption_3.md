@@ -1,0 +1,1 @@
+![The basement ritual chamber with a massive void tear floating above an ancient altar. Reality warps around its edges while The Voice manifests as a horror of forgotten knowledge and darkness. Corrupted texts float in the air. Style: Cosmic horror, eldritch architecture, void effects, ancient stonework.](illustration_caption_3.jpeg)

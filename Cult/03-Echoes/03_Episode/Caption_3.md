@@ -1,0 +1,1 @@
+![A grand concert hall with impossible geometric patterns of visible sound waves flowing through the air. Symphony conducts an orchestra of blank-faced musicians while the audience sits in perfect mathematical formations. Style: Gothic horror meets music visualization, with crystalline structures and mathematical symbols floating in the air.](illustration_caption_3.jpeg)

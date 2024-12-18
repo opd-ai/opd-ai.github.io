@@ -1,0 +1,1 @@
+![An ancient stone circle in a misty forest clearing at twilight, with fresh blood glistening on the stones. Reality visibly warps around the edges, while a partially manifested cosmic entity composed of shadows and strange geometries looms above. Style: Cosmic horror meets dark fantasy, photorealistic with supernatural distortion effects.](illustration_caption_2.jpeg)

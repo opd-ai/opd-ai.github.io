@@ -1,0 +1,1 @@
+![A grand Victorian military ballroom filled with officers in dress uniforms, crystal chandeliers casting prismatic light. Reality subtly warps in the corners while a distinguished colonel's medals emit an unnatural gleam. Style: Military formality meets subtle cosmic horror, emphasis on light and reality distortion.](illustration_caption_2.jpeg)

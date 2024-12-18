@@ -1,0 +1,1 @@
+![A Victorian-era bookshop interior with towering bookshelves disappearing into darkness. Books float in the air, their pages fluttering. A corrupted Inspector Hayes stands among the shelves, half-consumed by void energy, reaching out. Style: Dark gothic horror, atmospheric lighting, floating particles, reality distortion effects.](illustration_caption_2.jpeg)

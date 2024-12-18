@@ -1,0 +1,1 @@
+![A massive underground temple chamber with impossible architecture, where reality visibly warps and bends. Cosmic energy crackles around a partially transformed Moira Blackwood as she conducts a ritual. Style: Dark fantasy meets cosmic horror, with architectural impossibilities and organic transformations.](illustration_caption_3.jpeg)

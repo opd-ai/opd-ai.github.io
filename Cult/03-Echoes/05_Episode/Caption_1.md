@@ -1,0 +1,1 @@
+![The Golden Maze's layout featuring the market, counting house, and copper vault. Include trade flow patterns, calculation nodes, and perfect exchange points. Style: Arabian marketplace blueprint meets cosmic mathematics, with bazaar layouts transformed into eldritch patterns. Compass rose made of intersecting coin patterns.](map_caption_1.jpeg)
